@@ -30,7 +30,7 @@ export function openContact(id) {
 export function deleteContact(id) {
   return {
     type: c.CONTACT_DELETE,
-    payload: { request: {id} }
+    payload: { id }
   }
 }
 

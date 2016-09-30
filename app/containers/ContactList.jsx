@@ -2,12 +2,12 @@ import React, {Component} from 'react'
 import _ from 'lodash'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import {deleteContact} from '../actions/contact'
 
 class ContactList extends Component {
 
   render() {
-    const {contacts: {items}} = this.props
+    const {contacts: {items}, actions:{deleteContact}} = this.props
 
     return (
       <div className="row">
@@ -18,7 +18,7 @@ class ContactList extends Component {
           </p>
 
           <ul className="media-list row contacts-container">
-            {_.map(items, item => <ContactCard key={`item-${item.id}`} {...item} />)}
+            {_.map(items, item => <ContactCard key={`item-${item.id}`} {...item} onClickDelete={deleteContact.bind(this, item.id)} />)}
           </ul>
         </div>
       </div>
@@ -26,7 +26,7 @@ class ContactList extends Component {
   }
 }
 
-const ContactCard = ({id, full_name, telephone, email, photo}) => (
+const ContactCard = ({id, full_name, telephone, email, photo, onClickDelete}) => (
   <li className="media col-md-6 col-lg-4">
     <div className="thumbnail">
       <img className="media-object" src={photo} />
@@ -38,7 +38,7 @@ const ContactCard = ({id, full_name, telephone, email, photo}) => (
           {' '}
           <Link to={`/edit/${id}`}><span className="glyphicon glyphicon-pencil"></span></Link>
           {' '}
-          <a className="delete-contract">
+          <a className="delete-contract" onClick={onClickDelete}>
             <span className="glyphicon glyphicon-trash"></span>
           </a>
         </small>
@@ -62,7 +62,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   actions : {
-
+    deleteContact: (id) => {dispatch(deleteContact(id))}
   }
 });
 

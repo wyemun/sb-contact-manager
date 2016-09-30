@@ -47,7 +47,7 @@ export default createReducer(initialState, {
   [c.CONTACT_DELETE] : (state, {id}) => (
     {
       ...state,
-      //TODO
+      items:  _.reject(state.items, (item) => item.id === id),
       viewContactId: null
     }
   ),
