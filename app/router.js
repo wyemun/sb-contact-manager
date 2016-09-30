@@ -9,6 +9,7 @@ const AppRouter = (store, history) => (
       <Route path="/" component={App}>
 
       </Route>
+      <Route path="*" component={NotFound}/>
     </Router>
   </Provider>
 )
