@@ -94,10 +94,6 @@ const FormField = ({input, label, type='text', placeholder='', meta: {touched, e
 const mapStateToProps = (state, ownProps) => {
 
   const {params, location} = ownProps
-
-  console.log('params', params)
-  console.log('location', location)
-
   const isEdit = location.pathname.indexOf('/edit') !== -1
   const initialValues = (params.id && isEdit) ? null : null //TODO fill in the initialValues with store value
 

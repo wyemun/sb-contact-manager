@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import _ from 'lodash'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -6,6 +7,7 @@ import { bindActionCreators } from 'redux'
 class ContactList extends Component {
 
   render() {
+    const {contacts: {items}} = this.props
 
     return (
       <div className="row">
@@ -16,12 +18,7 @@ class ContactList extends Component {
           </p>
 
           <ul className="media-list row contacts-container">
-            <ContactCard />
-            <ContactCard />
-            <ContactCard />
-            <ContactCard />
-            <ContactCard />
-            <ContactCard />
+            {_.map(items, item => <ContactCard key={`item-${item.id}`} {...item} />)}
           </ul>
         </div>
       </div>
@@ -29,14 +26,14 @@ class ContactList extends Component {
   }
 }
 
-const ContactCard = ({}) => (
+const ContactCard = ({id, full_name, telephone, email, photo}) => (
   <li className="media col-md-6 col-lg-4">
     <div className="thumbnail">
-      <img className="media-object" src="/img/12.jpg" />
+      <img className="media-object" src={photo} />
     </div>
     <div className="media-heading">
       <h3>
-        Terrence S. Hatfield
+        {full_name}
         <small>
           {' '}
           <a><span className="glyphicon glyphicon-pencil"></span></a>
@@ -50,9 +47,9 @@ const ContactCard = ({}) => (
     <div className="media-body">
       <dl>
         <dt>Phone Number:</dt>
-        <dd>651-603-1723</dd>
+        <dd>{telephone}</dd>
         <dt>Email:</dt>
-        <dd>TerrenceSHatfield@rhyta.com</dd>
+        <dd>{email}</dd>
       </dl>
     </div>
     <hr/>
@@ -60,7 +57,7 @@ const ContactCard = ({}) => (
 )
 
 const mapStateToProps = (state) => ({
-
+  contacts: {...state.contacts}
 })
 
 const mapDispatchToProps = (dispatch) => ({
