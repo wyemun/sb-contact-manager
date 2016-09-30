@@ -1,6 +1,7 @@
 'use strict'
 
 var gulp        = require('gulp'),
+    path        = require('path'),
     uglify      = require('gulp-uglify'),
     watchify 	  = require('watchify'),
     babelify 	  = require('babelify'),
@@ -13,7 +14,8 @@ var gulp        = require('gulp'),
     _           = require('lodash'),
     gulpif      = require('gulp-if'),
     gutil       = require('gulp-util'),
-    rename      = require('gulp-rename')
+    rename      = require('gulp-rename'),
+    less        = require('gulp-less')
     //config      = require('./config.json')
 
 // Configuratioon
@@ -43,6 +45,11 @@ gulp
 
 /* Build CSS */
 .task('css', function(){
+  return gulp.src('./less/main.less')
+    .pipe(less({
+      paths: [ path.join(__dirname, 'less', 'includes') ]
+    }))
+    .pipe(gulp.dest(config.distPath))
   // var opts = {
   //   entry: './less/main.less',
   //   output: config.distPath + '/bundle.css',
