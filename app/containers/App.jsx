@@ -7,11 +7,19 @@ class App extends Component {
 
   render() {
     const {children} = this.props
-    
+
     return (
-      <div className="app-container">
-        <h1>Hello World</h1>
-        {children}
+      <div>
+        <header className="bs-header">
+          <div className="container">
+            <h1>Contact Manager</h1>
+            <p>Simple React + Redux example application by wyemun</p>
+          </div>
+        </header>
+
+        <div className="container">
+          {children}
+        </div>
       </div>
     )
   }
