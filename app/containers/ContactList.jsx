@@ -12,7 +12,7 @@ class ContactList extends Component {
         <div className='col-xs-12 main-container'>
           <h2 className="page-header text-center">List of contacts</h2>
           <p className="text-center">
-            <a className="btn btn-lg btn-outline">Add Contact</a>
+            <Link to='/create' className="btn btn-lg btn-outline">Add Contact</Link>
           </p>
 
           <ul className="media-list row contacts-container">
@@ -38,7 +38,9 @@ const ContactCard = ({}) => (
       <h3>
         Terrence S. Hatfield
         <small>
+          {' '}
           <a><span className="glyphicon glyphicon-pencil"></span></a>
+          {' '}
           <a className="delete-contract">
             <span className="glyphicon glyphicon-trash"></span>
           </a>
