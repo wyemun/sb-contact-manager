@@ -1,15 +1,22 @@
 import c from '../constants'
+import { goBack } from 'react-router-redux'
 
 // I'm just using Redux Thunk for this quick quiz
 // A larger app, especially with parallel process or async
 // can use something like Side Effect library like Redux Saga
 
-export function saveContact() {
+export function saveContact({full_name, email, telephone}) {
 
-  //get from getState
+  return (dispatch, getState) => {
 
-  return {
-    type: c.CONTACT_SAVE
+    dispatch({
+      type: c.CONTACT_SAVE,
+      payload: {full_name, email, telephone}
+    })
+
+    dispatch(goBack())
+
+    return
   }
 }
 
