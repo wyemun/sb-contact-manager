@@ -1,0 +1,22 @@
+{
+  "rules": {
+    "semi": 0
+  },
+  "plugins": [
+
+  ],
+  "ecmaVersion": 7,
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+        "experimentalObjectRestSpread": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  }
+}
