@@ -7,7 +7,8 @@ import {createConstants} from '../utils'
 const constants = createConstants(
   'CONTACT_SAVE',
   'CONTACT_OPEN',
-  'CONTACT_DELETE'
+  'CONTACT_DELETE',
+  'CONTACT_CLEAR_VIEW'
 )
 
 export default constants

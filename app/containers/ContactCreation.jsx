@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import _ from 'lodash'
 import validator from 'validator'
 import { Link } from 'react-router'
 import { goBack } from 'react-router-redux'
@@ -9,6 +10,7 @@ import * as ContactActionCreator from '../actions/contact'
 import { Field, reduxForm } from 'redux-form'
 
 class ContactCreation extends Component {
+
   render() {
 
     const {actions, isEdit, handleSubmit, pristine, submitting} = this.props
@@ -94,8 +96,11 @@ const FormField = ({input, label, type='text', placeholder='', meta: {touched, e
 const mapStateToProps = (state, ownProps) => {
 
   const {params, location} = ownProps
+  const {contacts: {items}} = state
   const isEdit = location.pathname.indexOf('/edit') !== -1
-  const initialValues = (params.id && isEdit) ? null : null //TODO fill in the initialValues with store value
+  const found = _.find(items, {id: params.id}) || null
+
+  const initialValues = (params.id && isEdit) ? found : null
 
   return {
     initialValues,

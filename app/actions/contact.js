@@ -23,7 +23,7 @@ export function saveContact({full_name, email, telephone}) {
 export function openContact(id) {
   return {
     type: c.CONTACT_OPEN,
-    payload: { request: {id} }
+    payload: { id }
   }
 }
 
@@ -31,5 +31,11 @@ export function deleteContact(id) {
   return {
     type: c.CONTACT_DELETE,
     payload: { request: {id} }
+  }
+}
+
+export function clearViewContact() {
+  return {
+    type: c.CONTACT_CLEAR_VIEW
   }
 }

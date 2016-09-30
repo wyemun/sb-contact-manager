@@ -36,7 +36,7 @@ const ContactCard = ({id, full_name, telephone, email, photo}) => (
         {full_name}
         <small>
           {' '}
-          <a><span className="glyphicon glyphicon-pencil"></span></a>
+          <Link to={`/edit/${id}`}><span className="glyphicon glyphicon-pencil"></span></Link>
           {' '}
           <a className="delete-contract">
             <span className="glyphicon glyphicon-trash"></span>
