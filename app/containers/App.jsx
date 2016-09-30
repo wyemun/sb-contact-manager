@@ -13,7 +13,7 @@ class App extends Component {
         <header className="bs-header">
           <div className="container">
             <h1>Contact Manager</h1>
-            <p>Simple React + Redux example application by wyemun</p>
+            <p>Simple React + Redux example application by <a className='text-link' href="https://twitter.com/wyemun">wyemun</a></p>
             <p style={{marginTop: '1rem'}}><a href="https://github.com/wyemun/sb-contact-manager/" className="btn btn-outline white btn-lg" role="button">View on Github</a></p>
           </div>
         </header>
