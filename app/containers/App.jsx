@@ -14,6 +14,7 @@ class App extends Component {
           <div className="container">
             <h1>Contact Manager</h1>
             <p>Simple React + Redux example application by wyemun</p>
+            <p style={{marginTop: '1rem'}}><a href="https://github.com/wyemun/sb-contact-manager/" className="btn btn-outline white btn-lg" role="button">View on Github</a></p>
           </div>
         </header>
 
