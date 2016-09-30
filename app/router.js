@@ -8,7 +8,8 @@ const AppRouter = (store, history) => (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={ContactList}/>
-        <Route path="/create" component={ContactCreation} />
+        <Route path="create" component={ContactCreation} />
+        <Route path="edit/:id" component={ContactCreation} />
       </Route>
       <Route path="*" component={NotFound}/>
     </Router>

@@ -11,12 +11,12 @@ import { Field, reduxForm } from 'redux-form'
 class ContactCreation extends Component {
   render() {
 
-    const {actions, handleSubmit, pristine, submitting} = this.props
+    const {actions, isEdit, handleSubmit, pristine, submitting} = this.props
 
     return (
       <div className="row">
         <div className='col-xs-12 main-container'>
-          <h2 className="page-header text-center">Create Contact</h2>
+          <h2 className="page-header text-center">{isEdit ? 'Edit' : 'Create'} Contact</h2>
 
           <form role="form" className="form-horizontal contract-form" onSubmit={handleSubmit(::this.onSubmit)}>
 
@@ -91,9 +91,23 @@ const FormField = ({input, label, type='text', placeholder='', meta: {touched, e
   </div>
 )
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => {
 
-})
+  const {params, location} = ownProps
+
+  console.log('params', params)
+  console.log('location', location)
+
+  const isEdit = location.pathname.indexOf('/edit') !== -1
+  const initialValues = (params.id && isEdit) ? null : null //TODO fill in the initialValues with store value
+
+  return {
+    initialValues,
+    params,
+    location,
+    isEdit
+  }
+}
 
 const mapDispatchToProps = (dispatch) => ({
   actions : {
