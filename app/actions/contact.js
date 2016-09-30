@@ -16,6 +16,13 @@ export function saveContact({full_name, email, telephone}) {
 
     dispatch(goBack())
 
+    //next tick, quick way of saving, assuming saving always successful in this case
+    //a more correct way is to use Side Effect way to trigger this instead
+    setTimeout(()=>{
+      const {contacts: {items}} = getState()
+      localStorage.setItem('contacts', JSON.stringify(items))
+    }, 0)
+
     return
   }
 }
@@ -37,5 +44,12 @@ export function deleteContact(id) {
 export function clearViewContact() {
   return {
     type: c.CONTACT_CLEAR_VIEW
+  }
+}
+
+export function loadContactList(records) {
+  return {
+    type: c.LOAD_CONTACTS,
+    payload: {records}
   }
 }

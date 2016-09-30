@@ -8,7 +8,8 @@ const constants = createConstants(
   'CONTACT_SAVE',
   'CONTACT_OPEN',
   'CONTACT_DELETE',
-  'CONTACT_CLEAR_VIEW'
+  'CONTACT_CLEAR_VIEW',
+  'LOAD_CONTACTS'
 )
 
 export default constants
