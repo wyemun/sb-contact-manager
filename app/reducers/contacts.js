@@ -34,7 +34,7 @@ export default createReducer(initialState, {
         return {...item, full_name, telephone, email}
       })
     } else {
-      newItems = [...items, createContact(full_name, telephone, email)]
+      newItems = [...state.items, createContact(full_name, telephone, email)]
     }
 
     return {
