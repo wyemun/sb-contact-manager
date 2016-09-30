@@ -26,6 +26,7 @@ app.use(errorhandler())
 app.use('/img', express.static(path.join(__dirname, 'dist/img') )) //static content
 app.use('/js', express.static(path.join(__dirname, 'dist') )) //static content
 app.use('/css', express.static(path.join(__dirname, 'dist') )) //static content
+app.use('/fonts', express.static(path.join(__dirname, 'dist/fonts') )) //static content
 
 // view + view engine
 // app.set('views', path.join(__dirname, '/server/views'))

@@ -70,11 +70,11 @@ gulp
 })
 
 /* Copy Fonts */
-// .task('fonts', function() {
-//     return gulp.src([
-//       'node_modules/font-awesome/fonts/*'])
-//     .pipe(gulp.dest(config.distPath + '/fonts/'))
-// })
+.task('fonts', function() {
+    return gulp.src([
+      'node_modules/bootstrap/fonts/*'])
+    .pipe(gulp.dest(config.distPath + '/fonts/'))
+})
 
 .task('set-production', function() {
     process.env.NODE_ENV = 'production'
@@ -86,11 +86,11 @@ gulp
   return buildScript('./app/index.jsx', true)
 })
 
-.task('build', gulpsync.sync(['clean:danger', ['copy', 'js', 'css']]), function(){
+.task('build', gulpsync.sync(['clean:danger', ['copy', 'fonts', 'js', 'css']]), function(){
   return
 })
 
-.task('build:production', gulpsync.sync(['set-production', 'clean:danger', ['copy', 'js', 'css']]), function(){
+.task('build:production', gulpsync.sync(['set-production', 'clean:danger', ['copy', 'fonts', 'js', 'css']]), function(){
   return
 })
 
