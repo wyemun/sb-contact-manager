@@ -84,11 +84,13 @@ const validateForm = ({full_name, telephone, email}) => {
 }
 
 //reusable form field
+const errorStyle = {color: '#a94442'}
 const FormField = ({input, label, type='text', placeholder='', meta: {touched, error}, extraClass = ''}) => (
   <div className={`form-group ${touched && error ? 'has-error' : ''}`}>
     <label className="col-sm-4 control-label">{label}:</label>
     <div className="col-sm-6">
       <input {...input} type={type} className={`form-control ${extraClass}`} placeholder={placeholder}/>
+      {touched && error && (<small style={errorStyle}>{error}</small>)}
     </div>
   </div>
 )
