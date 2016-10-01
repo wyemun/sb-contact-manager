@@ -35,9 +35,18 @@ export function openContact(id) {
 }
 
 export function deleteContact(id) {
-  return {
-    type: c.CONTACT_DELETE,
-    payload: { id }
+  return (dispatch, getState) => {
+    dispatch({
+      type: c.CONTACT_DELETE,
+      payload: { id }
+    })
+
+    setTimeout(()=>{
+      const {contacts: {items}} = getState()
+      localStorage.setItem('contacts', JSON.stringify(items))
+    }, 0)
+
+    return
   }
 }
 
